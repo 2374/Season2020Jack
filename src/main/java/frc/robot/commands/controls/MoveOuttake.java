@@ -5,8 +5,8 @@ import frc.robot.subsystems.Outtake;
 
 public class MoveOuttake extends CommandBase {
 
-   private Outtake outtake; 
-   private double power; 
+   private Outtake outtake;
+   private double power;
 
     public MoveOuttake(Outtake outtake, double power) {
         this.outtake = outtake;
@@ -17,7 +17,7 @@ public class MoveOuttake extends CommandBase {
 
     @Override
     public void initialize() {
-
+        
     }
 
     @Override
@@ -31,6 +31,7 @@ public class MoveOuttake extends CommandBase {
         outtake.move(0.0); 
     }
 
+    @Override
     public boolean isFinished() {
         return false; 
     }

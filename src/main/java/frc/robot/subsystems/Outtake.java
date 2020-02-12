@@ -8,13 +8,18 @@ import frc.robot.Constants;
 
 public class Outtake extends SubsystemBase {
     
-    private VictorSPX outtake; 
+    private VictorSPX outtakeRight; 
+    private VictorSPX outtakeLeft; 
 
     public Outtake() {
-        this.outtake = new VictorSPX(Constants.OUTTAKE_PORT); 
+        this.outtakeLeft = new VictorSPX(Constants.OUTTAKE_LEFT_PORT);
+        this.outtakeRight = new VictorSPX(Constants.OUTTAKE_RIGHT_PORT);
+
+        this.outtakeRight.setInverted(true);
     }
 
     public void move(double power) {
-        outtake.set(ControlMode.PercentOutput, power);
+        outtakeRight.set(ControlMode.PercentOutput, power);
+        outtakeLeft.set(ControlMode.PercentOutput, power);
     }
 }

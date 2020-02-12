@@ -2,12 +2,21 @@ package frc.robot;
 
 public final class Constants {
 
+    public static final double SPEED_INTAKE = 0.6;
+    public static final double SPEED_INDEXER_STAGE_1 = 0.4;
+    public static final double SPEED_INDEXER_STAGE_2 = 0.5;
+    public static final double SPEED_OUTAKE = 1.0;
+    public static final double SPEED_ARM = 0.8;
+    public static final double SPEED_FINGER = 0.2; 
+
     public static final int INTAKE_PORT = 5;
-    public static final int OUTTAKE_PORT = 19; 
+    public static final int OUTTAKE_RIGHT_PORT = 19;
+    public static final int OUTTAKE_LEFT_PORT = 8;
 
     public static final int CLIMBER_ARM_PORT = 20;
     public static final int CLIMBER_LEFT_PORT = 21;
     public static final int CLIMBER_RIGHT_PORT = 22;
+    public static final int CLIMBER_FINGER_PORT = 23; 
 
     public static final int INDEXER_STAGE_1_LEFT_PORT = 15;
     public static final int INDEXER_STAGE_1_RIGHT_PORT = 16;
@@ -19,7 +28,7 @@ public final class Constants {
     public static final int DRIVETRAIN_BACK_RIGHT_PORT = 3;
     public static final int DRIVETRAIN_BACK_LEFT_PORT = 4;
 
-    public static final int JOYSTICK_PORT = 0;
+    public static final int JOYSTICK_PORT = 3;
     public static final int JOYSTICK_X_AXIS = 0;
     public static final int JOYSTICK_Y_AXIS = 1;
     public static final int JOYSTICK_TRIGGER = 1;
@@ -35,16 +44,12 @@ public final class Constants {
     public static final int CONTROLLER_BUTTON_10 = 10;
     public static final int CONTROLLER_BUTTON_11 = 11;
 
-    public static final int XBOX_CONTROLLER_PORT = 3;
+    public static final int XBOX_CONTROLLER_PORT = 0;
     public static final int XBOX_CONTROLLER_BUTTON_A = 1;
 	public static final int XBOX_CONTROLLER_BUTTON_B = 2;
 	public static final int XBOX_CONTROLLER_BUTTON_X = 3;
     public static final int XBOX_CONTROLLER_BUTTON_Y = 4;
     public static final int XBOX_CONTROLLER_LEFT_TRIGGER = 2;
     public static final int XBOX_CONTROLLER_RIGHT_TRIGGER = 3;
-
-    public static final double SPEED_INDEXER_STAGE_1 = 0.4;
-    public static final double SPEED_INDEXER_STAGE_2 = 0.5;
-    public static final double SPEED_OUTAKE = 1.0;
     
 }

@@ -21,19 +21,21 @@ public class Indexer extends SubsystemBase {
 
         stage1Left.setInverted(true);
         stage2LeftFront.setInverted(true);
-        
 
-        
+        stage1Right.follow(stage1Left);
+        stage2LeftBack.follow(stage2LeftFront);
     }
 
     public void move(int stage, double power, int direction) {
         if (stage == 1) {
             stage1Left.set(ControlMode.PercentOutput, power * direction);
-            stage1Right.set(ControlMode.PercentOutput, power * direction);
         } else if (stage == 2) {
-            stage2LeftBack.set(ControlMode.PercentOutput, power * direction); 
             stage2LeftFront.set(ControlMode.PercentOutput, power * direction);
         }
+    }
+
+    public boolean isEmpty(int stage) {
+        return true;
     }
 
 }

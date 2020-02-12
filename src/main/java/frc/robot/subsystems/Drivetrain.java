@@ -20,13 +20,13 @@ public class Drivetrain extends SubsystemBase {
         this.backLeft = new TalonSRX(Constants.DRIVETRAIN_BACK_LEFT_PORT);
         this.backRight = new TalonSRX(Constants.DRIVETRAIN_BACK_RIGHT_PORT);
 
-        this.frontLeft.setNeutralMode(NeutralMode.Brake);
-        this.frontRight.setNeutralMode(NeutralMode.Brake);
-        this.backLeft.setNeutralMode(NeutralMode.Brake);
-        this.backRight.setNeutralMode(NeutralMode.Brake);
+        frontLeft.setNeutralMode(NeutralMode.Brake);
+        frontRight.setNeutralMode(NeutralMode.Brake);
+        backLeft.setNeutralMode(NeutralMode.Brake);
+        backRight.setNeutralMode(NeutralMode.Brake);
 
-       //frontLeft.setInverted(true);
-        //frontRight.setInverted(true);
+        // frontLeft.setInverted(true);
+        // frontRight.setInverted(true);
 
         backLeft.follow(frontLeft);
         backRight.follow(frontRight);
@@ -40,10 +40,8 @@ public class Drivetrain extends SubsystemBase {
     public void arcadeDrive(double throttleValue, double turnValue) {
         double leftMotor = -throttleValue + turnValue;
         double rightMotor = -throttleValue - turnValue;
-        System.out.println("Left Motor: " + leftMotor);
-        System.out.println("Right Motor: " + rightMotor);
+
         tankDrive(leftMotor, -rightMotor);
     }
-
     
 }

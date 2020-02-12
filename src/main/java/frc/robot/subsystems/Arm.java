@@ -13,7 +13,7 @@ public class Arm extends SubsystemBase {
     public Arm() {
         this.arm = new TalonSRX(Constants.CLIMBER_ARM_PORT);
         
-        arm.setInverted(true); 
+        arm.setInverted(true);
     }
 
     public void move(double power) {

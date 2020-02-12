@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Controller extends SubsystemBase {
+
     private Joystick joystickController;
     private XboxController xboxController;
 
     public Controller() {
-        
         this.joystickController = new Joystick(Constants.JOYSTICK_PORT);
         this.xboxController = new XboxController(Constants.XBOX_CONTROLLER_PORT);   
     }
