@@ -34,14 +34,14 @@ public class Drivetrain extends SubsystemBase {
 
     public void tankDrive(double leftValue, double rightValue) {
         frontLeft.set(ControlMode.PercentOutput, leftValue);
-        frontRight.set(ControlMode.PercentOutput, rightValue);
+        frontRight.set(ControlMode.PercentOutput, -rightValue);
     }
 
     public void arcadeDrive(double throttleValue, double turnValue) {
         double leftMotor = -throttleValue + turnValue;
         double rightMotor = -throttleValue - turnValue;
 
-        tankDrive(leftMotor, -rightMotor);
+        tankDrive(leftMotor, rightMotor);
     }
     
 }

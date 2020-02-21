@@ -1,6 +1,7 @@
 package frc.robot.commands.controls;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.Controller;
 import frc.robot.subsystems.Climber;
 
@@ -28,10 +29,7 @@ public class MoveClimber extends CommandBase {
     
     public void execute() {
         if (isLeft) {
-            climber.move(controller.getXboxControllerLeftTrigger());
-        } else {
-            climber.move(controller.getXboxControllerRightTrigger());
-
+            climber.move(Constants.SPEED_CLIMBER);
         }
     }
 

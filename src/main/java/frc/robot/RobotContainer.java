@@ -6,6 +6,7 @@ import frc.robot.commands.controls.MoveClimber;
 import frc.robot.commands.controls.MoveFinger;
 import frc.robot.commands.controls.MoveIndexer;
 import frc.robot.commands.controls.MoveIntake;
+import frc.robot.commands.controls.MoveIntakeIndexer;
 import frc.robot.commands.controls.MoveOuttake;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Finger;
@@ -44,17 +45,20 @@ public class RobotContainer {
     this.climber = new Climber();
     this.arm = new Arm();
     this.outtake = new Outtake(); 
-    this.finger = new Finger(); 
+    this.finger = new Finger();
 
     configureButtonBindings();  
   }
 
   private void configureButtonBindings() {
     JoystickButton button2 = new JoystickButton(controller.getJoystickController(), Constants.JOYSTICK_BUTTON_2);
-    JoystickButton button3 = new JoystickButton(controller.getJoystickController(), Constants.JOYSTICK_BUTTON_2);
+    JoystickButton button3 = new JoystickButton(controller.getJoystickController(), Constants.JOYSTICK_BUTTON_3);
     JoystickButton button4 = new JoystickButton(controller.getJoystickController(), Constants.JOYSTICK_BUTTON_4); 
+    JoystickButton button5 = new JoystickButton(controller.getJoystickController(), Constants.JOYSTICK_BUTTON_5);
     JoystickButton button6 = new JoystickButton(controller.getJoystickController(), Constants.CONTROLLER_BUTTON_6); 
     JoystickButton button7 = new JoystickButton(controller.getJoystickController(), Constants.CONTROLLER_BUTTON_7);
+    JoystickButton button8 = new JoystickButton(controller.getJoystickController(), Constants.CONTROLLER_BUTTON_8);
+    JoystickButton button9 = new JoystickButton(controller.getJoystickController(), Constants.CONTROLLER_BUTTON_9);
     JoystickButton button10 = new JoystickButton(controller.getJoystickController(), Constants.CONTROLLER_BUTTON_10); 
     JoystickButton button11 = new JoystickButton(controller.getJoystickController(), Constants.CONTROLLER_BUTTON_11); 
     JoystickButton trigger = new JoystickButton(controller.getJoystickController(), Constants.JOYSTICK_TRIGGER);
@@ -62,26 +66,32 @@ public class RobotContainer {
     JoystickAxisButton rightTrigger = new JoystickAxisButton(controller.getXboxController(), Constants.XBOX_CONTROLLER_RIGHT_TRIGGER, 0.1);
     JoystickButton buttonY = new JoystickButton(controller.getXboxController(), Constants.XBOX_CONTROLLER_BUTTON_Y);
     JoystickButton buttonB = new JoystickButton(controller.getXboxController(), Constants.XBOX_CONTROLLER_BUTTON_B); 
+    JoystickButton buttonA = new JoystickButton(controller.getXboxController(), Constants.XBOX_CONTROLLER_BUTTON_A);
+    JoystickButton buttonX = new JoystickButton(controller.getXboxController(), Constants.XBOX_CONTROLLER_BUTTON_X);
 
-    button4.whenPressed(new AutomateIndexer(indexer));
-    button6.whileHeld(new MoveIndexer(indexer, 2, Constants.SPEED_INDEXER_STAGE_2, 1));
-    button7.whileHeld(new MoveIndexer(indexer, 1, Constants.SPEED_INDEXER_STAGE_1, 1));
-    button10.whileHeld(new MoveIndexer(indexer, 1, Constants.SPEED_INDEXER_STAGE_1, -1));
-    button11.whileHeld(new MoveIndexer(indexer, 2, Constants.SPEED_INDEXER_STAGE_2, -1));
-    trigger.whileHeld(new MoveIntake(intake, Constants.SPEED_INTAKE, 1));
-    button3.whileHeld(new MoveIntake(intake, Constants.SPEED_INTAKE, -1));
-    button2.whileHeld(new MoveOuttake(outtake, Constants.SPEED_OUTAKE));
-
-
+    button4.whileHeld(new MoveIntakeIndexer(intake, indexer, Constants.SPEED_INDEXER_STAGE_1));
+    button3.whileHeld(new MoveIndexer(indexer, 2, Constants.SPEED_INDEXER_STAGE_2, 1));
+    button5.whileHeld(new MoveIndexer(indexer, 1, Constants.SPEED_INDEXER_STAGE_1, 1));
+    button9.whileHeld(new MoveIndexer(indexer, 1, Constants.SPEED_INDEXER_STAGE_1, -1));
+    button10.whileHeld(new MoveIndexer(indexer, 2, Constants.SPEED_INDEXER_STAGE_2, -1));
+    trigger.whileHeld(new MoveIntake(intake, Constants.SPEED_INTAKE, 1, indexer));
+    button6.whileHeld(new MoveIntake(intake, Constants.SPEED_INTAKE, -1, indexer));
+    button11.whileHeld(new MoveOuttake(outtake, Constants.SPEED_OUTAKE));  
     
-    leftTrigger.whileHeld(new MoveClimber(controller, climber, controller.getXboxControllerLeftTrigger(), -1, true));
-    
-    buttonY.whileHeld(new MoveArm(arm, Constants.SPEED_ARM));
+    //leftTrigger.whileHeld(new MoveClimber(controller, climber, Constants.SPEED_CLIMBER, -1, true));
+    buttonX.whenPressed(new MoveClimber(controller, climber, Constants.SPEED_CLIMBER, -1, true).withTimeout(2.0));
+    buttonY.whileHeld(new MoveArm(arm, Constants.SPEED_ARM_UP));
+    buttonA.whileHeld(new MoveArm(arm, Constants.SPEED_ARM_DOWN));
     buttonB.whileHeld(new MoveFinger(finger, Constants.SPEED_FINGER)); 
+    //buttonA.whileHeld(new MoveIntakeIndexer(intake, indexer, 0.6));
+    
+    
   }
 
   public Controller getController() { return controller; }
 
   public Drivetrain getDrivetrain() { return drivetrain; }
+
+  public boolean isButton2Pressed() {return controller.getJoystickButton2(); }
   
 }

@@ -17,7 +17,7 @@ public class AutonomousMove extends CommandBase {
     }
 
     public void execute() {
-        drivetrain.tankDrive(0.1, 0.1);
+        drivetrain.tankDrive(-0.35, -0.3);
 
     }
 

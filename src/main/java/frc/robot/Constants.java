@@ -2,12 +2,14 @@ package frc.robot;
 
 public final class Constants {
 
-    public static final double SPEED_INTAKE = 0.6;
-    public static final double SPEED_INDEXER_STAGE_1 = 0.4;
-    public static final double SPEED_INDEXER_STAGE_2 = 0.5;
+    public static final double SPEED_INTAKE = 0.9;
+    public static final double SPEED_INDEXER_STAGE_1 = 1.0;
+    public static final double SPEED_INDEXER_STAGE_2 = 1.0;
     public static final double SPEED_OUTAKE = 1.0;
-    public static final double SPEED_ARM = 0.8;
-    public static final double SPEED_FINGER = 0.2; 
+    public static final double SPEED_ARM_UP = 0.8;
+    public static final double SPEED_ARM_DOWN = -0.3;
+    public static final double SPEED_FINGER = 0.7;
+    public static final double SPEED_CLIMBER = 0.45; 
 
     public static final int INTAKE_PORT = 5;
     public static final int OUTTAKE_RIGHT_PORT = 19;
@@ -43,9 +45,10 @@ public final class Constants {
     public static final int CONTROLLER_BUTTON_9 = 9;
     public static final int CONTROLLER_BUTTON_10 = 10;
     public static final int CONTROLLER_BUTTON_11 = 11;
+    public static final int CONTROLLER_BUTTON_12 = 12; 
 
     public static final int XBOX_CONTROLLER_PORT = 0;
-    public static final int XBOX_CONTROLLER_BUTTON_A = 1;
+    public static final int XBOX_CONTROLLER_BUTTON_A = 1; //1;
 	public static final int XBOX_CONTROLLER_BUTTON_B = 2;
 	public static final int XBOX_CONTROLLER_BUTTON_X = 3;
     public static final int XBOX_CONTROLLER_BUTTON_Y = 4;

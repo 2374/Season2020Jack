@@ -5,6 +5,12 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.controls.AutonomousMove;
+import frc.robot.commands.controls.FullAuto;
+import frc.robot.commands.controls.MoveOuttake;
+import frc.robot.subsystems.Indexer;
+import frc.robot.subsystems.Outtake;
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -15,7 +21,10 @@ import frc.robot.commands.controls.AutonomousMove;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private Timer myTimer;
-  private RobotContainer robotContainer;
+  private RobotContainer robotContainer; 
+  private Outtake outake = new Outtake();
+  private Indexer indexer = new Indexer();
+
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -58,10 +67,13 @@ public class Robot extends TimedRobot {
   /**
    * This autonomous runs the autonomous command selected by your {@link RobotContainer} class.
    */
-  // @Override
+
+  @Override
   public void autonomousInit() {
     CommandScheduler.getInstance().run();
-    new AutonomousMove(robotContainer.getDrivetrain()).withTimeout(5.0).schedule();
+    new FullAuto(outake, robotContainer.getDrivetrain(), indexer).schedule();
+    // new AutonomousMove(robotContainer.getDrivetrain()).withTimeout(5.0).schedule();
+    
   }
 
   /**
@@ -88,7 +100,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    robotContainer.getDrivetrain().arcadeDrive(robotContainer.getController().getJoystickYAxis(), robotContainer.getController().getJoystickXAxis());
+    if (robotContainer.isButton2Pressed()) {
+      robotContainer.getDrivetrain().arcadeDrive(robotContainer.getController().getJoystickYAxis(), 0);
+    }
+    else {
+      robotContainer.getDrivetrain().arcadeDrive(robotContainer.getController().getJoystickYAxis(), robotContainer.getController().getJoystickXAxis());
+    }
+    
   }
 
   @Override
